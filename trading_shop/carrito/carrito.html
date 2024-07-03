@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="carrito.css">
+</head>
+<body>
+    <header>
+        <h1>Carrito de Compras</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="cartBody"></tbody>
+        </table>
+        <div class="total-container">
+            <p>Total: $<span id="totalAmount">0.00</span></p>
+        </div>
+        <div class="discord-name-container">
+            <label for="discordName">Nombre de Discord:</label>
+            <input type="text" id="discordName" required placeholder="Ingrese su nombre de Discord">
+        </div>
+        <div class="paypal-container">
+            <button id="paypalButton">Pagar con PayPal</button>
+        </div>
+    </main>
+    <script src="carrito.js"></script>
+</body>
+</html>

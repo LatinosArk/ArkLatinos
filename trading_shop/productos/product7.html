@@ -1,0 +1,50 @@
+<!-- product.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto - 7 Dinos OP</title>
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Latinos ARK Logo">
+        </div>
+        <h1>Latinos ARK</h1>
+    </header>
+    <main class="container">
+        <section class="product-detail">
+            <div class="product-image">
+                <img src="../images/ima.png" alt="Producto" id="productImage">
+            </div>
+            <div class="product-info">
+                <h2 id="productName">7 Dinos OP</h2>
+                <p id="productDescription">
+                        </p>
+                <p id="productPrice">Precio: $12,00</p>
+            </div>
+        </section>
+        <aside class="buy-section">
+            <div class="mini-invoice">
+                <h3>Factura</h3>
+                <p>Descuento 0%</p>
+                <p>Total: $12,00</p>
+                <button id="buyButton">PayPal</button>
+            </div>
+        </aside>
+    </main>
+    <footer>
+    </footer>
+
+    <script>
+        // Evento para el botón de compra (simulado)
+        document.getElementById('buyButton').addEventListener('click', function () {
+            // Redirigir a PayPal (simulado)
+            window.location.href = 'https://www.paypal.me/MarinaNMP'; // URL de PayPal
+        });
+    </script>
+</body>
+</html>
+

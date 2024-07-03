@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto - 500k Ambar</title>
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Latinos ARK Logo">
+        </div>
+        <h1>Latinos ARK</h1>
+    </header>
+    <main class="container">
+        <section class="product-detail">
+            <div class="product-image">
+                <img src="../images/product.jpg" alt="Producto" id="productImage">
+            </div>
+            <div class="product-info">
+                <h2 id="productName">500k Ambar</h2>
+                <p id="productDescription">
+                    <p>500K DE ÁMBAR,
+                        <p>TODAS LAS SKINS,</p>
+                        <p>TODAS LAS SKINS DE IMPLANTE,</p>
+                        <p>25 DE LOS POTENCIADORES DE STATS,</p>
+                        <p>250 FEROMONAS C,</p>
+                        <p>250 FEROMONAS H,</p>
+                        <p>150 CANDY,</p>
+                        <p>100 BÁLSAMOS x15,</p>
+                        <p>25 CADENAS DE ORO</p></p>
+                        </p>
+                <p id="productPrice">Precio: $1,00</p>
+            </div>
+        </section>
+        <aside class="buy-section">
+            <div class="mini-invoice">
+                <h3>Factura</h3>
+                <div class="invoice-name">
+                    <label for="customerName">Nombre ARK:</label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Ingrese su nombre" required>
+                </div>
+                <div class="additional-options">
+                    <label>
+                        <input type="checkbox" id="addDinos" data-price="3">
+                        3 Dinos OP ($3.00)
+                    </label><br>
+                    <label>
+                        <input type="checkbox" id="addMembership" data-price="4">
+                        Membresía Diamante ($4.00)
+                    </label><br>
+                    <label>
+                        <input type="checkbox" id="addAmber" data-price="3">
+                        Ambar + 1 Millón ($3.00)
+                    </label>
+                </div>
+                <p>Descuento 0%</p>
+                <p>Total: $<span id="totalPrice">1.00</span></p>
+                <button id="buyButton">PayPal</button>
+            </div>
+        </aside>
+    </main>
+    <footer>
+        <a href="https://discord.gg/BgkHUF3vtM" target="_blank" rel="noopener noreferrer">
+            <button class="social-button">
+                📩
+            </button>
+        </a>
+    </footer>
+
+    <script>
+        const basePrice = 1.00;
+        const addDinosCheckbox = document.getElementById('addDinos');
+        const addMembershipCheckbox = document.getElementById('addMembership');
+        const addAmberCheckbox = document.getElementById('addAmber');
+        const totalPriceElement = document.getElementById('totalPrice');
+
+        function updateTotalPrice() {
+            let totalPrice = basePrice;
+            if (addDinosCheckbox.checked) {
+                totalPrice += parseFloat(addDinosCheckbox.getAttribute('data-price'));
+            }
+            if (addMembershipCheckbox.checked) {
+                totalPrice += parseFloat(addMembershipCheckbox.getAttribute('data-price'));
+            }
+            if (addAmberCheckbox.checked) {
+                totalPrice += parseFloat(addAmberCheckbox.getAttribute('data-price'));
+            }
+            totalPriceElement.textContent = totalPrice.toFixed(2);
+        }
+
+        addDinosCheckbox.addEventListener('change', updateTotalPrice);
+        addMembershipCheckbox.addEventListener('change', updateTotalPrice);
+        addAmberCheckbox.addEventListener('change', updateTotalPrice);
+
+        document.getElementById('buyButton').addEventListener('click', function () {
+            const customerName = document.getElementById('customerName').value;
+            const productName = document.getElementById('productName').textContent;
+            let productPrice = parseFloat(document.getElementById('totalPrice').textContent);
+
+            if (customerName.trim() === "") {
+                alert("Por favor, ingrese su nombre ARK.");
+            } else {
+                const purchase = {
+                    customerName: customerName,
+                    productName: productName,
+                    productPrice: productPrice,
+                    timestamp: new Date().toLocaleString()
+                };
+
+                // Guardar la compra en localStorage
+                let purchases = JSON.parse(localStorage.getItem('purchases')) || [];
+                purchases.push(purchase);
+                localStorage.setItem('purchases', JSON.stringify(purchases));
+
+                // Redirigir a PayPal
+                window.location.href = 'https://www.paypal.me/MarinaNMP';
+            }
+        });
+    </script>
+</body>
+</html>
